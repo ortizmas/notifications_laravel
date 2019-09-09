@@ -11,16 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Broadcast::routes(['middleware' => ['auth:api']]);
+Broadcast::routes();
 
-Route::resource('posts', 'PostController');
-Route::resource('comments', 'CommentController');
 Route::put('notifications-all-read', 'NotificationController@markAllAsRead');
 Route::put('notifications-read', 'NotificationController@markAsRead');
 Route::get('notifications', 'NotificationController@notifications')->name('notifications');
 
+Route::resource('comments', 'CommentController');
+Route::resource('posts', 'PostController');
 
 Route::get('/clearCache', function(){
     Artisan::call('cache:clear');
@@ -30,6 +29,10 @@ Route::get('/clearCache', function(){
     Artisan::call('config:cache');
 
     return '<h1>Caches limpados</h1>';
+});
+
+Route::get('/', function () {
+    return view('welcome');
 });
 
 Auth::routes();

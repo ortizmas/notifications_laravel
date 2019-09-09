@@ -8,7 +8,7 @@ class NotificationController extends Controller
 {
     public function __construct()
     {
-        //https://www.youtube.com/watch?v=DQXO27zurwo&list=PLVSNL1PHDWvSOFpHtRi1-oZjBll69lehn&index=22
+       
     	$this->middleware('auth');
     }
 
